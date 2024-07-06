@@ -14,8 +14,12 @@ public class Save : MonoBehaviour
     [SerializeField] private const string isBy5Lines = "isBy5Lines"; 
     [SerializeField] private const string FirstTime = "FirstTime"; 
     [SerializeField] private const string Spins = "Spins"; 
-
-
+    [SerializeField] private const string IsSound = "IsSound";//0-без звука, 1 - со звуком 
+    [SerializeField] private const string BuyMusic1 = "BuyMusic1";//базовая музыка. 0 - не установлено, 1 - установлено.
+    [SerializeField] private const string BuyMusic2 = "BuyMusic2";//0-не купил, 1 - куплено
+    [SerializeField] private const string Music2 = "Music2";//0 - не установлена альт. музыка, 1- установлена альт. музыка
+    [SerializeField] private const string AltScreeSaver = "AltScreeSaver";//0 - не установлена альт. pic, 1- установлена альт. pic
+    [SerializeField] private const string BuyScreeSaver = "BuyScreeSaver";//0 - не купил. pic, 1- купил
     public static void SetData(int moneys, int pits, int mounts, int springboard, int rains, int By4Lines, int By5Lines, int spins)
     {
         PlayerPrefs.SetInt(money, moneys);
@@ -32,11 +36,59 @@ public class Save : MonoBehaviour
     {
         PlayerPrefs.SetInt(FirstTime, 1);
     }
+    public static void SetBuyScreeSaver()
+    {
+        PlayerPrefs.SetInt(BuyScreeSaver, 1);
+    }
     public static void SetMoney(int moneys)
     {
         int A = PlayerPrefs.GetInt(money);
         A += moneys;
         PlayerPrefs.SetInt(money, A);
+    }
+    public static void SetSound(int sound)//0-без звука, 1 - со звуком 
+    {
+        PlayerPrefs.SetInt(IsSound, sound);
+    }
+    public static void SetMusic1(int sound)
+    {
+        PlayerPrefs.SetInt(BuyMusic1, sound);
+    }
+    public static void SetMusic2(int sound)
+    {
+        PlayerPrefs.SetInt(BuyMusic2, sound);
+    }
+    public static void SetMusic(int sound)
+    {
+        PlayerPrefs.SetInt(Music2, sound);
+    }
+    public static void SetPic(int pic)
+    {
+        PlayerPrefs.SetInt(AltScreeSaver, pic);
+    }
+    public static int GetPicBuyed()
+    {
+        return PlayerPrefs.GetInt(BuyScreeSaver);
+    }
+    public static int GetPic()
+    {
+        return PlayerPrefs.GetInt(AltScreeSaver);
+    }
+    public static int GetMusic()
+    {
+        return PlayerPrefs.GetInt(Music2);
+    }
+    public static int GetSound()
+    {
+        return PlayerPrefs.GetInt(IsSound);
+    }
+    public static int GetMusic1()
+    {
+        return PlayerPrefs.GetInt(BuyMusic1);
+    }
+    public static int GetMusic2()
+    {
+        return PlayerPrefs.GetInt(BuyMusic2);
     }
     public static int GetSpins()
     {

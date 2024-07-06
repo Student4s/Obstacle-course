@@ -14,6 +14,8 @@ public class Shop : MonoBehaviour
     [SerializeField] private GamePreloader preloader;
     public bool isBy4Lines = false;
     public bool isBy5Lines = false;
+    public bool isByMusic = false;
+    public bool isByPic = false;
 
 
     [SerializeField] private Text mountCounts;
@@ -27,6 +29,11 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject buy5LinesCrutch;//убрать значок монетки 
     [SerializeField] private Text SpinCount;
 
+    [SerializeField] private GameObject buyAltMusic;//убрать значок монетки 
+    [SerializeField] private Text AltMusic;
+    [SerializeField] private GameObject buyAltPic;//убрать значок монетки 
+    [SerializeField] private Text AltPic;
+
 
     [SerializeField] private bool[] musicBuy;
     public PopUp pop;
@@ -36,7 +43,6 @@ public class Shop : MonoBehaviour
         if (Save.GetFirstTime() != 1)
         {
             Save.SetFirstTime();
-            money = 1000;
             Saves();
         }
         money = Save.GetMoney();
@@ -57,10 +63,26 @@ public class Shop : MonoBehaviour
             buy4Lines.text = "Buyed";
             buy5LinesCrutch.SetActive(false);
         }
+        if (Save.GetIsBy5Lines() == 1)
+        {
+            isBy5Lines = true;
+            buy4Lines.text = "Buyed";
+            buy5LinesCrutch.SetActive(false);
+        }
+        if (Save.GetMusic2() == 1)
+        {
+            isByMusic = true;
+            AltMusic.text = "Buyed";
+            buyAltMusic.SetActive(false);
+        }
+        if (Save.GetPic() == 1)
+        {
+            isByPic = true;
+            AltPic.text = "Buyed";
+            buyAltPic.SetActive(false);
+        }
         UpdateCounts();
     }
- 
- 
     public void BuySkillMount(int price)
     {
         if (money >= price)
@@ -126,21 +148,6 @@ public class Shop : MonoBehaviour
         }
         UpdateCounts();
     }
-
-    public void BuyMusic(int number, int price)
-    {
-        if (money < price)
-        {
-            pop.PopUpActivate();
-        }
-        if (money >= price && !musicBuy[number])
-        {
-            money -= price;
-            musicBuy[number] = true;
-            UpdateCounts();
-        }
-    }
-
     public void Buy4Lines(int price)
     {
         if (money < price)
@@ -152,7 +159,6 @@ public class Shop : MonoBehaviour
             money -= price;
             isBy4Lines = true;
         }
-
         UpdateCounts();
     }
     public void Buy5Lines(int price)
@@ -165,6 +171,34 @@ public class Shop : MonoBehaviour
         {
             money -= price;
             isBy5Lines = true;
+        }
+        UpdateCounts();
+    }
+    public void BuyAltMusic(int price)
+    {
+        if (money < price)
+        {
+            pop.PopUpActivate();
+        }
+        if (money >= price && !isByMusic)
+        {
+            money -= price;
+            isByMusic = true;
+            Save.SetMusic2(1);
+        }
+        UpdateCounts();
+    }
+    public void BuyAltPic(int price)
+    {
+        if (money < price)
+        {
+            pop.PopUpActivate();
+        }
+        if (money >= price && !isByPic)
+        {
+            money -= price;
+            isByPic = true;
+            Save.SetBuyScreeSaver();
         }
         UpdateCounts();
     }
@@ -201,6 +235,14 @@ public class Shop : MonoBehaviour
         if (isBy5Lines)
         {
             buy5Lines.text = "Buyed";
+        }
+        if (isByMusic)
+        {
+            AltMusic.text = "Buyed";
+        }
+        if (isByPic)
+        {
+            AltPic.text = "Buyed";
         }
         Saves();
     }

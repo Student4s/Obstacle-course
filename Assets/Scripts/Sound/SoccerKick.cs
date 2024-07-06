@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheeringSound : MonoBehaviour
+public class SoccerKick : MonoBehaviour
 {
     private AudioSource audios;
     void Start()
@@ -12,6 +12,10 @@ public class CheeringSound : MonoBehaviour
 
     public void Play()
     {
-        audios.Play();
+        if (Save.GetSound() == 1)
+        {
+            audios.Play();
+        }
+            
     }
 }

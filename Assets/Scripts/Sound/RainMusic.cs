@@ -27,7 +27,11 @@ public class RainMusic : MonoBehaviour
     }
     public void Play()
     {
-        audios.Play();
-        isPlay = true;
+        if(Save.GetSound()==1)
+        {
+            audios.Play();
+            isPlay = true;
+        }
+        
     }
 }
