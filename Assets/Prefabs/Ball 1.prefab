@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 116528484419458167}
   - component: {fileID: 696600171263443965}
   m_Layer: 0
-  m_Name: Ball
+  m_Name: Ball 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
-  moveSpeed: 3
+  moveSpeed: 300
   moveSpeedRight: 0.2
   target: {fileID: 0}
   shrinkRate: 0.2

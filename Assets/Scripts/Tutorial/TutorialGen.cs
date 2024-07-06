@@ -28,6 +28,10 @@ public class TutorialGen : MonoBehaviour
     [SerializeField] private GameObject tip13;
     [SerializeField] private GameObject rain1;
     [SerializeField] private GameObject rain2;
+
+    [SerializeField] private ParticleSystem p1;
+    [SerializeField] private ParticleSystem p2;
+    [SerializeField] private ParticleSystem p3;
     private void OnEnable()
     {
         Ball.Goaal += ChangeScore;
@@ -78,6 +82,12 @@ public class TutorialGen : MonoBehaviour
             {
                 tip13.SetActive(true);
                 MainWinPanel.gameObject.SetActive(true);
+                p1.gameObject.SetActive(true);
+                p2.gameObject.SetActive(true);
+                p3.gameObject.SetActive(true);
+                p1.Play();
+                p2.Play();
+                p3.Play();
             }
         }
         Stop();
@@ -89,7 +99,8 @@ public class TutorialGen : MonoBehaviour
         for (int i = 0; i < footballers.Count; i++)
         {
             footballers[i].gameObject.SetActive(true);
-            footballers[i].transform.position = spawnPoints[i].position;
+            footballers[i].coef = 0;
+           footballers[i].transform.position = spawnPoints[i].position;
         }
         footballers[2].speed = 0.5f;
         footballers[2].acceleration = 0.1f;

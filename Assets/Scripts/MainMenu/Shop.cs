@@ -213,9 +213,6 @@ public class Shop : MonoBehaviour
         {
             money -= tournamentPrice;
             UpdateCounts();
-            //int[] numbers = { 3, 5, 7 };
-            //int randomIndex = Random.Range(0, numbers.Length);
-            //preloader.roundCounts = numbers[randomIndex];
         }
     }
 

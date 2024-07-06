@@ -51,8 +51,7 @@ public void SoundOn()
     }
     public void DeffMusic()
     {
-        Save.SetMusic1(1);
-        Save.SetMusic2(0);
+        Save.SetMusic(0);
         music.Main();
         altMusic.gameObject.SetActive(false);
         defMusic.gameObject.SetActive(true);
@@ -61,14 +60,11 @@ public void SoundOn()
     {
         if(Save.GetMusic2()==1)
         {
-            Save.SetMusic1(0);
-            Save.SetMusic2(1);
+            Save.SetMusic(1);
             music.Main();
             altMusic.gameObject.SetActive(true);
             defMusic.gameObject.SetActive(false);
         }
-      
-
     }
     public void DefPic()
     {
@@ -84,7 +80,12 @@ public void SoundOn()
             defPic.gameObject.SetActive(false);
             altPic.gameObject.SetActive(true);
         }
-        
     }
 
+    public void AllReset()
+    {
+        Save.DeleteAllData();
+        Save.SetMoneyZero();
+        Save.SetFirstTimeZero();
+    }
 }

@@ -15,7 +15,7 @@ public class Save : MonoBehaviour
     [SerializeField] private const string FirstTime = "FirstTime"; 
     [SerializeField] private const string Spins = "Spins"; 
     [SerializeField] private const string IsSound = "IsSound";//0-без звука, 1 - со звуком 
-    [SerializeField] private const string BuyMusic1 = "BuyMusic1";//базовая музыка. 0 - не установлено, 1 - установлено.
+    //[SerializeField] private const string BuyMusic1 = "BuyMusic1";//базовая музыка. 0 - не установлено, 1 - установлено.
     [SerializeField] private const string BuyMusic2 = "BuyMusic2";//0-не купил, 1 - куплено
     [SerializeField] private const string Music2 = "Music2";//0 - не установлена альт. музыка, 1- установлена альт. музыка
     [SerializeField] private const string AltScreeSaver = "AltScreeSaver";//0 - не установлена альт. pic, 1- установлена альт. pic
@@ -50,10 +50,10 @@ public class Save : MonoBehaviour
     {
         PlayerPrefs.SetInt(IsSound, sound);
     }
-    public static void SetMusic1(int sound)
-    {
-        PlayerPrefs.SetInt(BuyMusic1, sound);
-    }
+   // public static void SetMusic1(int sound)
+    //{
+    //    PlayerPrefs.SetInt(BuyMusic1, sound);
+    //}
     public static void SetMusic2(int sound)
     {
         PlayerPrefs.SetInt(BuyMusic2, sound);
@@ -82,10 +82,10 @@ public class Save : MonoBehaviour
     {
         return PlayerPrefs.GetInt(IsSound);
     }
-    public static int GetMusic1()
-    {
-        return PlayerPrefs.GetInt(BuyMusic1);
-    }
+   // public static int GetMusic1()
+   // {
+    //    return PlayerPrefs.GetInt(BuyMusic1);
+   // }
     public static int GetMusic2()
     {
         return PlayerPrefs.GetInt(BuyMusic2);
@@ -129,6 +129,16 @@ public class Save : MonoBehaviour
     public static void DeleteAllData()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    //fOR TEST
+    public static void SetMoneyZero()
+    {
+        PlayerPrefs.SetInt(money, 0);
+    }
+    public static void SetFirstTimeZero()
+    {
+        PlayerPrefs.SetInt(FirstTime, 0);
     }
 
 }

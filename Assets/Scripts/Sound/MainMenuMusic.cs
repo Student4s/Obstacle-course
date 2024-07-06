@@ -23,11 +23,11 @@ public class MainMenuMusic : MonoBehaviour
         {
             audios.volume = 0.05f;
         }
-        if (Save.GetMusic2() == 1)
+        if (Save.GetMusic() == 1)
         {
             audios.clip = audio2;
         }
-        if (Save.GetMusic2() != 1)
+        if (Save.GetMusic() != 1)
         {
             audios.clip = audio1;
         }

@@ -27,7 +27,7 @@ public class Ball : MonoBehaviour
     {
         transform.localScale -= new Vector3(shrinkRate, shrinkRate, shrinkRate) * Time.deltaTime;// м€ч слегка уменьшаетс€ в полете, чтобы было немного реалистично.
         transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
-       // transform.Translate(Vector3.right * moveSpeedRight * Time.deltaTime);
+        // transform.Translate(Vector3.right * moveSpeedRight * Time.deltaTime);
 
         Vector3 direction = target.position - transform.position;
         direction.Normalize();

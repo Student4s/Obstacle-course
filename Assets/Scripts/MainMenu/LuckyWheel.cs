@@ -26,6 +26,7 @@ public class LuckyWheel : MonoBehaviour
 
     private void Start()
     {
+        rotateSpeed = Random.Range(300, 600);
         rotateSpeed2 = rotateSpeed;
         countOfSpins.text = "Spins: " +shop.spinCount.ToString();
     }
@@ -41,6 +42,7 @@ public class LuckyWheel : MonoBehaviour
             }
             else
             {
+                rotateSpeed = Random.Range(300, 600);
                 CheckPrize();
                 isRotate = false;
                 rotateSpeed2 = rotateSpeed;

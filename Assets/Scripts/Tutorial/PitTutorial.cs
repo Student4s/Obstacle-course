@@ -56,10 +56,8 @@ public class PitTutorial : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
         if (collision.GetComponent<Footballer>() != null && isUse)
         {
-            Debug.Log("1");
             collision.gameObject.SetActive(false);
             Destroy(gameObject);
         }

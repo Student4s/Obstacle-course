@@ -34,8 +34,11 @@ public class GameGen : MonoBehaviour
     [SerializeField] private RainMusic rain;
     [SerializeField] private CheeringSound sound;
 
+    [SerializeField] private ParticleSystem p1;
+    [SerializeField] private ParticleSystem p2;
+    [SerializeField] private ParticleSystem p3;
 
-    // [SerializeField] private bool isGame = false;// чтобы запускать нажатием по екрану
+
     private void OnEnable()
     {
         Ball.Goaal += ChangeScore;
@@ -46,6 +49,9 @@ public class GameGen : MonoBehaviour
     }
     void Start()
     {
+        p1.Stop();
+        p2.Stop();
+        p3.Stop();
         GamePreloader[] gamePreloaders = FindObjectsOfType<GamePreloader>();
 
         if (gamePreloaders[0].roundCounts==4)
@@ -91,6 +97,12 @@ public class GameGen : MonoBehaviour
             else
             {
                 MainWinPanel.gameObject.SetActive(true);
+                p1.gameObject.SetActive(true);
+                p2.gameObject.SetActive(true);
+                p3.gameObject.SetActive(true);
+                p1.Play();
+                p2.Play();
+                p3.Play();
                 var a = Save.GetMoney()+ prizeMoney;
                 var a1 = Save.GetPits();
                 var a2 = Save.GetMounts();
