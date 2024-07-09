@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public Shop shop;
     [SerializeField] private int tournamentPrice;
+    public PopUp pop2;//4-5Lines
 
     public void Load3Lines()
     {
@@ -15,10 +16,15 @@ public class LevelManager : MonoBehaviour
 
     public void Load4Lines()
     {
-        if(shop.isBy4Lines)
+        if (shop.isBy4Lines)
         {
             SceneManager.LoadScene("GameX4");
         }
+        else
+        {
+            pop2.PopUpActivate();
+        }
+
     }
 
     public void Load5Lines()
@@ -27,6 +33,11 @@ public class LevelManager : MonoBehaviour
         {
             SceneManager.LoadScene("GameX5");
         }
+        else
+        {
+            pop2.PopUpActivate();
+        }
+
     }
     public void LoadMenu()
     {
@@ -38,14 +49,31 @@ public class LevelManager : MonoBehaviour
     }
     public void LoadTournament1()
     {      
-        SceneManager.LoadScene("GameX3");
+        if(shop.money>=300)
+        {
+            SceneManager.LoadScene("GameX3");
+        }
     }
     public void LoadTournament2()
     {
-        SceneManager.LoadScene("GameX4");
+        if (shop.isBy4Lines&& shop.money >= 500)
+        {
+            SceneManager.LoadScene("GameX4");
+        }
+        if(!shop.isBy4Lines)
+        {
+            pop2.PopUpActivate();
+        }
     }
     public void LoadTournament3()
     {
-        SceneManager.LoadScene("GameX5");
+        if (shop.isBy5Lines && shop.money >= 1000)
+        {
+            SceneManager.LoadScene("GameX5");
+        }
+        if (!shop.isBy5Lines)
+        {
+            pop2.PopUpActivate();
+        }
     }
 }

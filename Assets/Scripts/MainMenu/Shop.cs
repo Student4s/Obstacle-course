@@ -37,6 +37,7 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private bool[] musicBuy;
     public PopUp pop;
+
     public LevelManager lvlManager;
     void Start()
     {
@@ -159,6 +160,7 @@ public class Shop : MonoBehaviour
             money -= price;
             isBy4Lines = true;
         }
+        
         UpdateCounts();
     }
     public void Buy5Lines(int price)
